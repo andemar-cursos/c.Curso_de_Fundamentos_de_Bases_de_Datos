@@ -1,0 +1,2 @@
+-- platziblog
+create schema platziblog;
