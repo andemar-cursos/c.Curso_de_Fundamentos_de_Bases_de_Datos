@@ -28,6 +28,7 @@ create table platziblog.etiquetas
         primary key (id)
 );
 
+-- 25. Tablas dependientes
 create table platziblog.posts
 (
     id                int auto_increment,
@@ -45,5 +46,19 @@ create table platziblog.posts
     constraint posts_usuarios_null_fk
         foreign key (usuarios_id) references platziblog.usuarios (id)
             on update cascade
+);
+
+-- 26. Tablas transitivas
+create table platziblog.posts_etiquetas
+(
+    id          int auto_increment,
+    post_id     int not null,
+    etiqueta_id int not null,
+    constraint posts_etiquetas_pk
+        primary key (id),
+    constraint posts_etiquetas_etiquetas_null_fk
+        foreign key (etiqueta_id) references platziblog.etiquetas (id),
+    constraint posts_etiquetas_posts_null_fk
+        foreign key (post_id) references platziblog.posts (id)
 );
 
