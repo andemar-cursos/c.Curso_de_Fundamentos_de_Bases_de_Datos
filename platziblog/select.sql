@@ -72,3 +72,66 @@ SELECT *
 FROM usuarios
 RIGHT JOIN posts ON usuarios.id = posts.usuario_id
 WHERE posts.usuario_id IS NULL;
+
+
+-- 32. WHERE
+-- Comparadores, menor, mayor, igual, etc etc.
+SELECT *
+FROM posts
+WHERE id < 50;
+
+SELECT *
+FROM posts
+WHERE id <= 50;
+
+SELECT *
+FROM posts
+WHERE id >= 50;
+
+SELECT *
+FROM posts
+WHERE estatus = 'activo';
+
+SELECT *
+FROM posts
+WHERE estatus != 'activo';
+
+SELECT *
+FROM posts
+WHERE id != 50;
+
+-- Like, permite mostrar resultados, que en el interior de la data contenga x dato. Sin el % al principio, 
+--el registro debe comenzar con X, sin el % al final el registro debe terminar con X.
+SELECT *
+FROM posts
+WHERE titulo LIKE '%escandalo%';
+
+SELECT *
+FROM posts
+WHERE titulo LIKE 'escandalo%';
+
+SELECT *
+FROM posts
+WHERE titulo LIKE '%escandalo';
+
+-- Podemos buscar fechas, con <>=, entre fechas con BETWEEN y AND (Tambien numeros) y buscar especificamente por
+-- años, meses, dias, etc...
+SELECT *
+FROM posts
+WHERE fecha_publicacion > '2025-01-01';
+
+SELECT *
+FROM posts
+WHERE fecha_publicacion BETWEEN '2023-01-01' AND '2025-12-31';
+
+SELECT *
+FROM posts
+WHERE id BETWEEN '50' AND '60';
+
+SELECT *
+FROM posts
+WHERE YEAR(fecha_publicacion) BETWEEN '2023' AND '2024';
+
+SELECT *
+FROM posts
+WHERE MONTH(fecha_publicacion) = '04';
