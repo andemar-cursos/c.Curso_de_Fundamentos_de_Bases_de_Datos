@@ -28,3 +28,22 @@ create table platziblog.etiquetas
         primary key (id)
 );
 
+create table platziblog.posts
+(
+    id                int auto_increment,
+    titulo            varchar(150)             not null,
+    fecha_publicacion timestamp                null,
+    contenido         text                     not null,
+    estatus           char(8) default 'activo' null,
+    usuarios_id       int                      not null,
+    categorias_id     int                      not null,
+    constraint posts_pk
+        primary key (id),
+    constraint posts_categorias_null_fk
+        foreign key (categorias_id) references platziblog.categorias (id)
+            on update cascade,
+    constraint posts_usuarios_null_fk
+        foreign key (usuarios_id) references platziblog.usuarios (id)
+            on update cascade
+);
+
