@@ -135,3 +135,29 @@ WHERE YEAR(fecha_publicacion) BETWEEN '2023' AND '2024';
 SELECT *
 FROM posts
 WHERE MONTH(fecha_publicacion) = '04';
+
+
+-- 33. Where null and not null
+-- Usuario_id que son nullos
+SELECT *
+FROM posts
+WHERE usuario_id IS NULL;
+
+-- Categoria_id que son nullos
+SELECT *
+FROM posts
+WHERE posts.categoria_id IS NULL;
+
+-- Usuario_id que no son nullos
+SELECT *
+FROM posts
+WHERE usuario_id IS NOT NULL;
+
+-- Varias filtros, incluyendo usuario_id no son nullos
+SELECT *
+FROM posts
+WHERE usuario_id IS NOT NULL
+    AND estatus = 'activo'
+    AND id < 50
+    AND categoria_id = 2
+    AND YEAR(fecha_publicacion) = '2025';
